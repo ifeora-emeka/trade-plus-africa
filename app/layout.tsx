@@ -13,8 +13,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "TradePulse Africa",
-  description: "Real-time insights into Africa's trade dynamics - Track commodity prices, analyze market trends, and make informed decisions with our comprehensive trade intelligence platform.",
+  title: "TradePulse Nigeria",
+  description:
+    "Real-time insights into Nigeria's export market intelligence - Track Nigerian commodity prices, analyze export trends, and make informed trading decisions with our comprehensive trade intelligence platform for Nigeria's non-oil exports.",
 };
 
 export default function RootLayout({

@@ -109,16 +109,16 @@ export function Hero({ onSearch }: HeroProps) {
         <div className="max-w-4xl mx-auto space-y-8">
           <div className="space-y-4">
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground leading-tight">
-              Real-time insights into{" "}
+              Nigeria's{" "}
               <span className="bg-gradient-to-r from-primary to-chart-1 bg-clip-text text-transparent">
-                Africa's trade
+                export market
               </span>{" "}
-              dynamics
+              intelligence
             </h1>
             
             <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-              Track commodity prices, analyze market trends, and make informed decisions with our 
-              comprehensive trade intelligence platform for non-oil exports.
+              Track Nigerian commodity prices, analyze export trends, and make informed trading decisions
+              with real-time market intelligence for Nigeria's non-oil exports.
             </p>
           </div>
           
@@ -129,15 +129,15 @@ export function Hero({ onSearch }: HeroProps) {
           <div className="flex flex-wrap justify-center gap-6 pt-8 text-sm text-muted-foreground">
             <div className="flex items-center gap-2">
               <div className="w-2 h-2 rounded-full bg-chart-1" />
-              <span>Real-time prices</span>
+              <span>Live Nigerian prices</span>
             </div>
             <div className="flex items-center gap-2">
               <div className="w-2 h-2 rounded-full bg-chart-2" />
-              <span>Market forecasts</span>
+              <span>Export forecasts</span>
             </div>
             <div className="flex items-center gap-2">
               <div className="w-2 h-2 rounded-full bg-chart-3" />
-              <span>Trade analytics</span>
+              <span>Market analytics</span>
             </div>
           </div>
         </div>

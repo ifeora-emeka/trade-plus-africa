@@ -106,7 +106,7 @@ const TradePulseLogo = () => (
         fontFamily="system-ui"
         letterSpacing="2px"
       >
-        AFRICA
+        NIGERIA
       </text>
       
       <rect

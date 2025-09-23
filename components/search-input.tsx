@@ -4,24 +4,41 @@ import { Search } from "lucide-react"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { useState } from "react"
+import { useRouter } from "next/navigation"
 
 interface SearchInputProps {
   placeholder?: string
   className?: string
   onSearch?: (query: string) => void
+  defaultValue?: string
 }
 
 export function SearchInput({ 
   placeholder = "Search for commodities like cocoa, sesame seeds, cashew nuts...",
   className = "",
-  onSearch
+  onSearch,
+  defaultValue = ""
 }: SearchInputProps) {
-  const [query, setQuery] = useState("")
+  const [query, setQuery] = useState(defaultValue)
+  const router = useRouter()
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    if (query.trim() && onSearch) {
-      onSearch(query.trim())
+    if (query.trim()) {
+      if (onSearch) {
+        onSearch(query.trim())
+      } else {
+        router.push(`/search?query=${encodeURIComponent(query.trim())}`)
+      }
+    }
+  }
+
+  const handlePopularSearchClick = (term: string) => {
+    setQuery(term)
+    if (onSearch) {
+      onSearch(term)
+    } else {
+      router.push(`/search?query=${encodeURIComponent(term)}`)
     }
   }
 
@@ -60,10 +77,7 @@ export function SearchInput({
           <button
             key={term}
             type="button"
-            onClick={() => {
-              setQuery(term)
-              if (onSearch) onSearch(term)
-            }}
+            onClick={() => handlePopularSearchClick(term)}
             className="text-primary hover:text-primary/80 hover:underline transition-colors"
           >
             {term}

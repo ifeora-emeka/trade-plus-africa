@@ -1,29 +1,18 @@
 # Todo
-[] Admin should be able to login to see the site.
-[] Users should be able to see the details page of a commodity.
-[] Users should be able to search for an item and see the results (search result page)
-[] Users should be able to see the price trend of a commodity (details page horizontal chart)
-[] Users should be able to see the forecasted price of a commodity (details page horizontal chart)
-[] Users should be able to see the price trend of a commodity (details page vertical chart)
-[] Users should be able to see the forecasted price of a commodity (details page vertical chart)
-[] Users should be able to see the validation metric of a commodity (details page)
-[] Users should be able to see the homepage with a list of commodities and their current prices.
-[] Users should be able to see the homepage with a search bar.
-[] Users should be able to see the homepage with a list of popular commodities.
-[] Users should be able to see the homepage with a list of actively traded commodities.
-[] Users should be able to see the homepage with a list of commodities and their price trends (up or down arrows).
-[] Users should be able to see the homepage with a list of commodities and their price trends (color coding).
-[] Users should be able to see the homepage with a list of commodities and their price trends (green for up, red for down).
-[] Users should be able to see the homepage with a list of commodities and their price trends (yellow for stable).
-[] Users should be able to see the homepage with a list of commodities and their price trends (grey for no data).
-[] Users should be able to see the details page with an interactive time-series chart.
-[] Users should be able to see the details page with historical price trends.
-[] Users should be able to see the details page with forecasted price trends.
-[] Users should be able to see the details page with confidence intervals for forecasted prices.
-[] Users should be able to see the details page with contextual insights explaining key factors influencing prices.
-[] Users should be able to see the details page with validation metrics reflecting forecast accuracy.
-[] Users should be able to access the platform on both desktop and mobile devices.
-[] Data should be sourced from reliable international databases such as FAOSTAT, UNCTAD, and the World Bank, combined with national trade records.
+- [ ] Admin should be able to login to see the site.
+- [ ] Users should be able to see the details page of a commodity.
+- [ ] Users should be able to search for an item and see the results (search result page)
+- [ ] Users should be able to see the price trend of a commodity (details page horizontal chart)
+- [ ] Users should be able to see the forecasted price of a commodity (details page horizontal chart)
+- [ ] Users should be able to see the price trend of a commodity (details page vertical chart)
+- [ ] Users should be able to see the forecasted price of a commodity (details page vertical chart)
+- [ ] Users should be able to see the validation metric of a commodity (details page)
+- [ ] Users should be able to see the homepage with a list of commodities and their current prices.
+- [ ] Users should be able to see the homepage with a search bar.
+- [ ] Users should be able to see the homepage with a list of popular commodities.
+- [ ] Users should be able to see the homepage with a list of actively traded commodities.
+- [x] Users should be able to see the homepage with a list of commodities and their price trends
+- [ ] Users should be able to see the details page with an interactive time-series chart.
 
 
 
@@ -36,4 +25,3 @@ Upon clicking any listed commodity, users will be directed to a detailed informa
 The details page will also include contextual insights explaining key factors influencing the current and projected prices, such as harvest cycles, policy changes, or supply chain disruptions, helping users understand the drivers behind market fluctuations. Additionally, a validation metric will be shown to reflect how closely recent forecasts have aligned with actual market prices, reinforcing trust in the system’s accuracy. 
 - Exporters and policymakers can use this information to inform pricing strategies, negotiate contracts, and plan logistics with greater confidence, aligning with the goal of enhancing Nigeria’s competitiveness in global trade. 
 To support decision-making, the platform will integrate a responsive design suitable for desktop and mobile access, ensuring usability across different stakeholder groups including field agents, export companies, and government agencies. All data will be sourced from reliable international databases such as FAOSTAT, UNCTAD, and the World Bank, combined with national trade records, to ensure consistency and relevance. By combining predictive intelligence with user-friendly visualization, TradePulse Africa will function not only as a price tracking tool but as a strategic dashboard that empowers stakeholders with timely, accurate, and actionable market intelligence.
-
