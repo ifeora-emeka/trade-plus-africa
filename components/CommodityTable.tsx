@@ -1,6 +1,7 @@
 "use client";
 
 import { CommodityCard } from "./commodity-card";
+import Image from "next/image";
 
 const popularCommodities = [
     {
@@ -95,7 +96,7 @@ const popularCommodities = [
     }
 ]
 
-export default function CommodityTable() {
+export default function CommodityTable({ imageUrl, name} : {imageUrl: string, name: string}) {
     return (
         <div className="w-full">
             {/* Desktop Table */}
@@ -125,11 +126,7 @@ export default function CommodityTable() {
                     >
                         {/* Top: Image + Name + Region */}
                         <div className="flex items-center gap-3">
-                            <img
-                                src={commodity.imageUrl}
-                                alt={commodity.name}
-                                className="w-10 h-10 rounded-full object-cover"
-                            />
+                            <Image src={imageUrl} alt={name} fill className="object-cover rounded-full" />
                             <div>
                                 <p className="font-semibold">{commodity.name}</p>
                                 <p className="text-xs text-gray-500">{commodity.region}</p>
