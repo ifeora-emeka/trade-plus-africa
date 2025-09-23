@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "TradePulse Africa",
-  description: "Real-time insights into Africa's trade dynamics.",
+  description: "Real-time insights into Africa's trade dynamics - Track commodity prices, analyze market trends, and make informed decisions with our comprehensive trade intelligence platform.",
 };
 
 export default function RootLayout({
