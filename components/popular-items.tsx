@@ -16,7 +16,7 @@ const popularCommodities = [
     lastUpdate: "2 mins ago",
     volume: "12.5K tons",
     region: "West Africa",
-    imageUrl: "https://images.unsplash.com/photo-1481671703460-040cb8a2d909?w=400&h=300&fit=crop&crop=center",
+    imageUrl: "https://images.unsplash.com/photo-1545567724-9b16e57c906d?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     grade1IsPositive: true,
     grade2IsPositive: true
   },
@@ -31,7 +31,7 @@ const popularCommodities = [
     lastUpdate: "5 mins ago",
     volume: "8.2K tons",
     region: "East Africa",
-    imageUrl: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=300&fit=crop&crop=center",
+    imageUrl: "https://images.unsplash.com/photo-1594999791332-48843eebd9d9?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8c2VzYW1lJTIwc2VlZHN8ZW58MHx8MHx8fDA%3D",
     grade1IsPositive: false,
     grade2IsPositive: false
   },
@@ -46,7 +46,7 @@ const popularCommodities = [
     lastUpdate: "1 min ago",
     volume: "6.8K tons",
     region: "West Africa",
-    imageUrl: "https://images.unsplash.com/photo-1508367163-b5ddbc762aad?w=400&h=300&fit=crop&crop=center",
+    imageUrl: "https://images.unsplash.com/photo-1615485925873-7ecbbe90a866?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8Y2FzaGV3JTIwbnV0c3xlbnwwfHwwfHx8MA%3D%3D",
     grade1IsPositive: true,
     grade2IsPositive: false
   },
@@ -61,7 +61,7 @@ const popularCommodities = [
     lastUpdate: "8 mins ago",
     volume: "25.1K tons",
     region: "Central Africa",
-    imageUrl: "https://images.unsplash.com/photo-1605367269627-4822247d8f51?w=400&h=300&fit=crop&crop=center",
+    imageUrl: "https://images.unsplash.com/photo-1596752837587-c75150cf66f7?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8b2lsJTIwcGFsbSUyMHNlZWR8ZW58MHx8MHx8fDA%3D",
     grade1IsPositive: true,
     grade2IsPositive: true
   },
@@ -76,7 +76,7 @@ const popularCommodities = [
     lastUpdate: "3 mins ago",
     volume: "4.5K tons",
     region: "West Africa",
-    imageUrl: "https://images.unsplash.com/photo-1518977676601-b53f82aba655?w=400&h=300&fit=crop&crop=center",
+    imageUrl: "https://images.unsplash.com/photo-1635008388183-04ea0313c5d1?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8Z2luZ2VyJTIwcGxhbnR8ZW58MHx8MHx8fDA%3D",
     grade1IsPositive: false,
     grade2IsPositive: true
   },
@@ -91,7 +91,7 @@ const popularCommodities = [
     lastUpdate: "4 mins ago",
     volume: "18.7K tons",
     region: "East Africa",
-    imageUrl: "https://images.unsplash.com/photo-1447933601403-0c6688de566e?w=400&h=300&fit=crop&crop=center",
+    imageUrl: "https://images.unsplash.com/photo-1675306408031-a9aad9f23308?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Y29mZmVlJTIwYmVhbnN8ZW58MHx8MHx8fDA%3D",
     grade1IsPositive: true,
     grade2IsPositive: true
   }
@@ -99,65 +99,88 @@ const popularCommodities = [
 
 export function PopularItems() {
   return (
-    <section className="py-16 bg-gradient-to-b from-background to-muted/20">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="space-y-12">
-          <div className="text-center space-y-4">
-            <div className="flex items-center justify-center gap-2 mb-2">
-              <TrendingUp className="h-6 w-6 text-primary" />
-              <span className="text-sm font-medium text-primary uppercase tracking-wider">Market Spotlight</span>
-            </div>
-            
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground">
-              Most Popular{" "}
-              <span className="bg-gradient-to-r from-primary to-chart-1 bg-clip-text text-transparent">
+      <section className="py-16 bg-gradient-to-b from-background to-muted/20">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="space-y-12">
+                  {/* Header */}
+                  <div className="text-center space-y-4">
+                      <div className="flex items-center justify-center gap-2 mb-2">
+                          <TrendingUp className="h-6 w-6 text-primary" />
+                          <span className="text-sm font-medium text-primary uppercase tracking-wider">
+                Market Spotlight
+              </span>
+                      </div>
+
+                      <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground">
+                          Most Popular{" "}
+                          <span className="bg-gradient-to-r from-primary to-chart-1 bg-clip-text text-transparent">
                 Commodities
               </span>
-            </h2>
-            
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Real-time prices and trends for Africa's top non-oil export commodities. 
-              Track market movements and make informed trading decisions.
-            </p>
-          </div>
+                      </h2>
 
-          <div className="space-y-6">
-            {popularCommodities.map((commodity, index) => (
-              <CommodityCard
-                key={commodity.name}
-                {...commodity}
-              />
-            ))}
-          </div>
+                      <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+                          Real-time prices and trends for Africa&apos;s top non-oil export commodities.
+                          Track market movements and make informed trading decisions.
+                      </p>
+                  </div>
 
-          <div className="text-center pt-8">
-            <Button 
-              size="lg" 
-              className="group bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-6 text-base font-medium"
-            >
-              View All Commodities
-              <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
-            </Button>
-          </div>
+                  {/* Binance-style Table */}
+                  <div className="w-full border border-border/50 rounded-lg overflow-hidden">
+                      {/* Table Header - Desktop */}
+                      <div className="hidden md:grid md:grid-cols-7 bg-muted/40 text-muted-foreground text-sm font-medium py-3 px-4 border-b border-border/50 sticky top-0">
+                          <div>Commodity</div>
+                          <div>Grade 1 Price</div>
+                          <div>Grade 1 %</div>
+                          <div>Grade 1 Change</div>
+                          <div>Grade 2 Price</div>
+                          <div>Grade 2 %</div>
+                          <div>Volume</div>
+                      </div>
 
-          <div className="bg-gradient-to-r from-primary/5 via-chart-1/5 to-chart-2/5 rounded-2xl p-8 border border-border/50">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-              <div className="space-y-2">
-                <p className="text-3xl font-bold text-foreground">150+</p>
-                <p className="text-sm text-muted-foreground uppercase tracking-wider">Commodities Tracked</p>
+                      {/* Table Body */}
+                      <div className="divide-y divide-border/50">
+                          {popularCommodities.map((commodity) => (
+                              <CommodityCard key={commodity.name} {...commodity} />
+                          ))}
+                      </div>
+                  </div>
+
+                  {/* CTA Button */}
+                  <div className="text-center pt-8">
+                      <Button
+                          size="lg"
+                          className="group bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-6 text-base font-medium"
+                      >
+                          View All Commodities
+                          <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+                      </Button>
+                  </div>
+
+                  {/* Stats Section */}
+                  <div className="bg-gradient-to-r from-primary/5 via-chart-1/5 to-chart-2/5 rounded-2xl p-8 border border-border/50">
+                      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                          <div className="space-y-2">
+                              <p className="text-3xl font-bold text-foreground">150+</p>
+                              <p className="text-sm text-muted-foreground uppercase tracking-wider">
+                                  Commodities Tracked
+                              </p>
+                          </div>
+                          <div className="space-y-2">
+                              <p className="text-3xl font-bold text-foreground">25</p>
+                              <p className="text-sm text-muted-foreground uppercase tracking-wider">
+                                  African Countries
+                              </p>
+                          </div>
+                          <div className="space-y-2">
+                              <p className="text-3xl font-bold text-foreground">99.8%</p>
+                              <p className="text-sm text-muted-foreground uppercase tracking-wider">
+                                  Data Accuracy
+                              </p>
+                          </div>
+                      </div>
+                  </div>
               </div>
-              <div className="space-y-2">
-                <p className="text-3xl font-bold text-foreground">25</p>
-                <p className="text-sm text-muted-foreground uppercase tracking-wider">African Countries</p>
-              </div>
-              <div className="space-y-2">
-                <p className="text-3xl font-bold text-foreground">99.8%</p>
-                <p className="text-sm text-muted-foreground uppercase tracking-wider">Data Accuracy</p>
-              </div>
-            </div>
           </div>
-        </div>
-      </div>
-    </section>
+      </section>
   )
 }
