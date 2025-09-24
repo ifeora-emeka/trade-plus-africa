@@ -102,7 +102,7 @@ interface HeroProps {
 
 export function Hero({ onSearch }: HeroProps) {
   return (
-    <section className="relative min-h-[70vh] flex items-center justify-center bg-gradient-to-br from-background via-muted/30 to-background overflow-hidden">
+    <section className="relative min-h-[70vh]  flex items-center justify-center bg-gradient-to-br from-background via-muted/30 to-background overflow-hidden">
       <HeroPattern />
       
       <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -126,7 +126,7 @@ export function Hero({ onSearch }: HeroProps) {
             <SearchInput onSearch={onSearch} />
           </div>
           
-          <div className="flex flex-wrap justify-center gap-6 pt-8 text-sm text-muted-foreground">
+          <div className="flex flex-wrap justify-center gap-6 pt-8 text-sm text-muted-foreground mb-5">
             <div className="flex items-center gap-2">
               <div className="w-2 h-2 rounded-full bg-chart-1" />
               <span>Live Nigerian prices</span>
