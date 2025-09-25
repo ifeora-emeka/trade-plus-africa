@@ -1,11 +1,9 @@
 "use client"
 
-import { Header } from "@/components/header"
 import { SearchInput } from "@/components/search-input"
 import { CommodityCard } from "@/components/commodity-card"
 import { Button } from "@/components/ui/button"
-import {ArrowLeft, SearchIcon} from "lucide-react"
-import Link from "next/link"
+import { SearchIcon } from "lucide-react"
 import { useSearchParams } from "next/navigation"
 import { useMemo } from "react"
 
@@ -132,7 +130,7 @@ const allCommodities = [
   }
 ]
 
-export default function SearchPage() {
+export function SearchResults() {
   const searchParams = useSearchParams()
   const query = searchParams.get("query") || ""
 
@@ -146,20 +144,9 @@ export default function SearchPage() {
   }, [query])
 
   return (
-    <div className="min-h-screen bg-background">
-      <Header />
-
+    <>
       <div className="sticky top-16 z-40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b">
         <div className="container mx-auto px-4 py-6">
-          <div className="flex items-center gap-4 mb-4">
-            <Link href="/">
-              <Button variant="outline" size="sm">
-                <ArrowLeft className="w-4 h-4 mr-2" />
-                Back to Home
-              </Button>
-            </Link>
-          </div>
-
           <SearchInput
             defaultValue={query}
             placeholder="Search for commodities..."
@@ -220,6 +207,6 @@ export default function SearchPage() {
           )}
         </div>
       </div>
-    </div>
+    </>
   )
 }
