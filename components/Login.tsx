@@ -1,105 +1,91 @@
-"use client";
+"use client"
 
-import { useState, useEffect } from "react";
+import { useState } from "react"
+import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card"
+import { Input } from "@/components/ui/input"
+import { Button } from "@/components/ui/button"
+import { Label } from "@/components/ui/label"
+import { useRouter } from "next/navigation"
+import { useAuth } from "@/context/AuthContext"
 
-interface LoginFormProps {
-  onLoginSuccess?: () => void; // optional callback (e.g., redirect)
-}
-
-export function LoginForm({ onLoginSuccess }: LoginFormProps) {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
-  const [loading, setLoading] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-
-  useEffect(() => {
-    const loggedIn = localStorage.getItem("isLoggedIn");
-    if (loggedIn === "true") {
-      setIsLoggedIn(true);
-    }
-  }, []);
+export function LoginForm() {
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState<string | null>(null)
+  const router = useRouter()
+  const { setLoggedIn } = useAuth() // ✅ get auth context
 
   async function handleLogin(e: React.FormEvent) {
-    e.preventDefault();
-    setLoading(true);
-    setError("");
+    e.preventDefault()
+    setLoading(true)
+    setError("")
 
     try {
       const res = await fetch("/api/public/admin/auth", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),
-      });
+        credentials: "include", // save cookie
+      })
 
-      const data = await res.json();
+      const data = await res.json()
 
       if (res.ok) {
-        localStorage.setItem("isLoggedIn", "true");
-        setIsLoggedIn(true);
-        if (onLoginSuccess) onLoginSuccess();
+        // ✅ update global auth state
+        document.cookie = "auth-ui=true; path=/"
+        setLoggedIn(true)
+
+        router.push("/") // redirect to home
       } else {
-        setError(data.error || "Login failed"); // ✅ use `error` instead of `message`
+        setError(data.error || "Login failed")
       }
     } catch (err) {
-      setError("Something went wrong");
+      setError("Something went wrong. Please try again.")
     } finally {
-      setLoading(false);
+      setLoading(false)
     }
   }
 
-  function handleLogout() {
-    localStorage.removeItem("isLoggedIn");
-    setIsLoggedIn(false);
-  }
 
-  if (isLoggedIn) {
-    return (
-      <div className="p-6 bg-white rounded-lg shadow text-center">
-        <h2 className="text-xl font-semibold mb-2">Welcome Admin </h2>
-        <p className="text-gray-600 mb-4">You are logged in!</p>
-        <button
-          onClick={handleLogout}
-          className="w-full bg-red-600 hover:bg-red-700 text-white py-2 rounded-lg font-medium transition"
-        >
-          Logout
-        </button>
-      </div>
-    );
-  }
 
   return (
-    <form
-      onSubmit={handleLogin}
-      className="p-6 bg-white rounded-lg shadow space-y-4 w-full max-w-lg"
-    >
-      <h2 className="text-2xl font-bold text-center">Admin Login</h2>
+    <Card className="w-full max-w-md">
+      <CardHeader>
+        <CardTitle className="text-center text-xl">Login</CardTitle>
+      </CardHeader>
+      <CardContent>
+        <form onSubmit={handleLogin} className="space-y-4">
+          <div>
+            <Label htmlFor="email">Email</Label>
+            <Input
+              id="email"
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="you@example.com"
+              required
+            />
+          </div>
+          <div>
+            <Label htmlFor="password">Password</Label>
+            <Input
+              id="password"
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="••••••••"
+              required
+            />
+          </div>
 
-      <input
-        type="email"
-        placeholder="Email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-        className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring focus:ring-gray-400"
-      />
+          {error && <p className="text-destructive text-sm">{error}</p>}
 
-      <input
-        type="password"
-        placeholder="Password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-        className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring focus:ring-gray-400"
-      />
-
-      {error && <p className="text-red-500 text-sm">{error}</p>}
-
-      <button
-        type="submit"
-        disabled={loading}
-        className="w-full bg-gray-700 hover:bg-gray-950 text-white py-2 rounded-lg font-medium transition"
-      >
-        {loading ? "Logging in..." : "Login"}
-      </button>
-    </form>
-  );
+          <Button type="submit" className="w-full" disabled={loading}>
+            {loading ? "Logging in..." : "Log In"}
+          </Button>
+        </form>
+      </CardContent>
+    </Card>
+  )
 }

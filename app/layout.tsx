@@ -1,17 +1,18 @@
+// app/layout.tsx
 import type { Metadata } from "next"
 import { Geist, Geist_Mono } from "next/font/google"
 import "./globals.css"
+import { HeaderWrapper } from "@/components/HeaderWrapper"
+// client wrapper
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
-  display: "swap",   // important for local bundling
 })
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
-  display: "swap",   // same here
 })
 
 export const metadata: Metadata = {
@@ -22,12 +23,13 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode
-}>) {
+}) {
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+        <HeaderWrapper />
         {children}
       </body>
     </html>

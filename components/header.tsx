@@ -1,8 +1,9 @@
 "use client"
 
+import { useState, useEffect } from "react"
+import { useRouter } from "next/navigation"
+import { LogoutButton } from "./Logout"
 import Link from "next/link"
-import { Button } from "@/components/ui/button"
-import { useEffect, useState } from "react"
 
 const TradePulseLogo = () => (
   <svg
@@ -122,21 +123,20 @@ const TradePulseLogo = () => (
   </svg>
 )
 
+
 export function Header() {
-    const [isLoggedIn, setIsLoggedIn] = useState(false)
+   const [isLoggedIn, setIsLoggedIn] = useState(false)
 
-  // Check login state from localStorage
+  // Check the auth cookie on mount
   useEffect(() => {
-    const loggedIn = localStorage.getItem("isLoggedIn")
-    setIsLoggedIn(loggedIn === "true")
+    const authCookie = document.cookie
+      .split("; ")
+      .find((row) => row.startsWith("auth-ui="))
+    setIsLoggedIn(authCookie?.split("=")[1] === "true")
   }, [])
-
-  function handleLogout() {
-    localStorage.removeItem("isLoggedIn")
-    setIsLoggedIn(false)
-  }
+  
   return (
-     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           <Link href="/" className="flex items-center space-x-2">
@@ -144,20 +144,17 @@ export function Header() {
           </Link>
 
           <nav className="flex items-center space-x-4">
-            {isLoggedIn ? (
-              <Button
-                variant="destructive"
-                size="sm"
-                onClick={handleLogout}
-              >
-                Logout
-              </Button>
-            ) : (
-              <Button variant="default" size="sm" asChild>
-                <Link href="/login">Login</Link>
-              </Button>
-            )}
-          </nav>
+       
+       {isLoggedIn && (
+          <LogoutButton
+            onLogout={() => {
+              // clear cookie already handled in LogoutButton
+              setIsLoggedIn(false) // update local state
+            }}
+          />
+        )}
+</nav>
+
         </div>
       </div>
     </header>

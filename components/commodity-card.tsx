@@ -50,7 +50,7 @@ export function CommodityCard({
                     {/* Name + Image */}
                     <div className="flex items-center gap-2">
                         <div className="relative w-6 h-6 flex-shrink-0">
-                            <Image src={imageUrl} alt={name} fill className="object-cover rounded-full" />
+                            <Image src={imageUrl} alt={name} fill  className="object-cover rounded-full" />
                         </div>
                         <div className="flex flex-col">
                             <span className="font-medium text-gray-900">{name}</span>
@@ -113,13 +113,13 @@ export function CommodityCard({
                         </div>
                     </div>
 
-                    <div className="grid grid-cols-2 gap-3">
+                    <div className="grid grid-cols-2 gap-48">
                         <div>
                             <p className="text-xs text-gray-500">Grade 1 Price</p>
                             <p className="font-medium">${grade1Price.toLocaleString()}</p>
                             <p
                                 className={cn(
-                                    "flex items-center gap-1 text-xs",
+                                    "flex items-center  text-[11px]",
                                     grade1IsPositive ? "text-emerald-600" : "text-red-600"
                                 )}
                             >
@@ -129,11 +129,11 @@ export function CommodityCard({
                         </div>
 
                         <div>
-                            <p className="text-xs text-gray-500">Grade 2 Price</p>
-                            <p className="font-medium">${grade2Price.toLocaleString()}</p>
+                            <p className="text-xs text-gray-500 text-right">Grade 2 Price</p>
+                            <p className="font-medium text-right">${grade2Price.toLocaleString()}</p>
                             <p
                                 className={cn(
-                                    "flex items-center gap-1 text-xs",
+                                    "flex items-center text-right text-[11px]",
                                     grade2IsPositive ? "text-emerald-600" : "text-red-600"
                                 )}
                             >
