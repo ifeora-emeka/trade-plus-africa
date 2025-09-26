@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server"
 import { z } from "zod"
+import { cookies } from "next/headers"
 
 const loginSchema = z.object({
   email: z.string().email("Invalid email format"),
@@ -45,7 +46,7 @@ export async function POST(request: NextRequest) {
     const authToken = Buffer.from(`${email}:${Date.now()}`).toString('base64')
 
     response.cookies.set("auth-token", authToken, {
-      httpOnly: true,
+      httpOnly: false,
       secure: process.env.NODE_ENV === "production",
       sameSite: "lax",
       maxAge: 60 * 60 * 24 * 7,
