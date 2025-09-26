@@ -8,13 +8,17 @@ import { Label } from "@/components/ui/label"
 import { useRouter } from "next/navigation"
 import { useAuth } from "@/context/AuthContext"
 
-export function LoginForm() {
+interface LoginFormProps {
+  onLoginSuccess?: () => void
+}
+
+export function LoginForm({ onLoginSuccess }: LoginFormProps) {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const router = useRouter()
-  const { setLoggedIn } = useAuth() // ✅ get auth context
+  const { setLoggedIn } = useAuth()
 
   async function handleLogin(e: React.FormEvent) {
     e.preventDefault()
@@ -26,28 +30,29 @@ export function LoginForm() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),
-        credentials: "include", // save cookie
+        credentials: "include",
       })
 
       const data = await res.json()
 
       if (res.ok) {
-        // ✅ update global auth state
         document.cookie = "auth-ui=true; path=/"
         setLoggedIn(true)
 
-        router.push("/") // redirect to home
+        if (onLoginSuccess) {
+          onLoginSuccess() // ✅ call the prop callback
+        } else {
+          router.push("/")
+        }
       } else {
         setError(data.error || "Login failed")
       }
-    } catch (err) {
+    } catch {
       setError("Something went wrong. Please try again.")
     } finally {
       setLoading(false)
     }
   }
-
-
 
   return (
     <Card className="w-full max-w-md">
