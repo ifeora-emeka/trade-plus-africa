@@ -9,7 +9,7 @@ export function LogoutButton({ onLogout }: { onLogout?: () => void }) {
   const handleLogout = async () => {
     await fetch("/api/public/admin/logout", { method: "POST" })
     if (onLogout) onLogout()
-    router.push("/") // redirect back to login form
+    router.push("/login") // redirect back to login form
   }
 
   return <Button variant="destructive" onClick={handleLogout}>Logout</Button>
